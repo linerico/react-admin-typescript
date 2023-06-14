@@ -1,15 +1,11 @@
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined"
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined"
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined"
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, useTheme } from "@mui/material"
 import { ColorModeEnum, tokens } from "../../theme"
 import Header from "../../components/Header"
 import { MenuTabEnum } from "../global/Sidebar"
-import { DataGrid, GridColDef } from "@mui/x-data-grid"
-import { mockDataTeam } from "../../data/mockData"
-import { TeamAccessTypeEnum } from "../../model/team"
+import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid"
+import { mockDataContacts } from "../../data/mockData"
 
-const Team = () => {
+const Contacts = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode as ColorModeEnum)
 
@@ -18,6 +14,10 @@ const Team = () => {
       field: "id",
       headerName: "ID",
     }, 
+    {
+      field: "registrarId",
+      headerName: "Registrar ID",
+    },
     {
       field: "name",
       headerName: "Name",
@@ -42,40 +42,25 @@ const Team = () => {
       flex: 1,
     }, 
     {
-      field: "access",
-      headerName: "Access Level",
+      field: "address",
+      headerName: "Address",
       flex: 1,
-      headerAlign: "center",
-      renderCell: ({row: { access }}) => {
-        return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            borderRadius="4px"
-            sx={{
-              backgroundColor: access === TeamAccessTypeEnum.ADMIN
-                ? colors.greenAccent[600]
-                : colors.greenAccent[700]
-            }}
-          >
-            {access === TeamAccessTypeEnum.ADMIN && <AdminPanelSettingsOutlinedIcon />}
-            {access === TeamAccessTypeEnum.MANAGER && <SecurityOutlinedIcon />}
-            {access === TeamAccessTypeEnum.USER && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px"}}>
-              {access}
-            </Typography>
-          </Box>
-        )
-      }
-    }
+    }, 
+    {
+      field: "city",
+      headerName: "City",
+      flex: 1,
+    }, 
+    {
+      field: "zipCode",
+      headerName: "Zip Code",
+      flex: 1,
+    }, 
   ]
 
   return (
     <Box m="20px">
-      <Header title={MenuTabEnum.MANAGER_TEAM} subtitle="Managing the Team Member" />
+      <Header title={MenuTabEnum.CONTACTS_INFORMATION} subtitle="List of Contacts for Future Referance" />
       <Box
         m="40px 0 0 0" 
         height="75vh"
@@ -100,15 +85,19 @@ const Team = () => {
             borderTop: "none",
             backgroundColor: colors.blueAccent[700],
           },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.grey[100]} !important`,
+          }
         }}
       >
         <DataGrid
-          rows={mockDataTeam}
+          rows={mockDataContacts}
           columns={columns}
+          components={{ Toolbar: GridToolbar }}
         />
       </Box>
     </Box>
   )
 }
 
-export default Team
+export default Contacts

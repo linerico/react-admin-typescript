@@ -1,13 +1,16 @@
+import { ContactModel } from "../model/contact";
+import { InvoiceModel } from "../model/invoice";
+import { TeamAccessTypeEnum, TeamModel } from "../model/team";
 import { ColorModeEnum, tokens } from "../theme";
 
-export const mockDataTeam = [
+export const mockDataTeam: Array<TeamModel> = [
   {
     id: 1,
     name: "Jon Snow",
     email: "jonsnow@gmail.com",
     age: 35,
     phone: "(665)121-5454",
-    access: "admin",
+    access: TeamAccessTypeEnum.ADMIN,
   },
   {
     id: 2,
@@ -15,7 +18,7 @@ export const mockDataTeam = [
     email: "cerseilannister@gmail.com",
     age: 42,
     phone: "(421)314-2288",
-    access: "manager",
+    access: TeamAccessTypeEnum.MANAGER,
   },
   {
     id: 3,
@@ -23,7 +26,7 @@ export const mockDataTeam = [
     email: "jaimelannister@gmail.com",
     age: 45,
     phone: "(422)982-6739",
-    access: "user",
+    access: TeamAccessTypeEnum.USER,
   },
   {
     id: 4,
@@ -31,7 +34,7 @@ export const mockDataTeam = [
     email: "anyastark@gmail.com",
     age: 16,
     phone: "(921)425-6742",
-    access: "admin",
+    access: TeamAccessTypeEnum.ADMIN,
   },
   {
     id: 5,
@@ -39,7 +42,7 @@ export const mockDataTeam = [
     email: "daenerystargaryen@gmail.com",
     age: 31,
     phone: "(421)445-1189",
-    access: "user",
+    access: TeamAccessTypeEnum.USER,
   },
   {
     id: 6,
@@ -47,7 +50,7 @@ export const mockDataTeam = [
     email: "evermelisandre@gmail.com",
     age: 150,
     phone: "(232)545-6483",
-    access: "manager",
+    access: TeamAccessTypeEnum.MANAGER,
   },
   {
     id: 7,
@@ -55,7 +58,7 @@ export const mockDataTeam = [
     email: "ferraraclifford@gmail.com",
     age: 44,
     phone: "(543)124-0123",
-    access: "user",
+    access: TeamAccessTypeEnum.USER,
   },
   {
     id: 8,
@@ -63,7 +66,7 @@ export const mockDataTeam = [
     email: "rossinifrances@gmail.com",
     age: 36,
     phone: "(222)444-5555",
-    access: "user",
+    access: TeamAccessTypeEnum.USER,
   },
   {
     id: 9,
@@ -71,11 +74,11 @@ export const mockDataTeam = [
     email: "harveyroxie@gmail.com",
     age: 65,
     phone: "(444)555-6239",
-    access: "admin",
+    access: TeamAccessTypeEnum.ADMIN,
   },
 ];
 
-export const mockDataContacts = [
+export const mockDataContacts: Array<ContactModel> = [
   {
     id: 1,
     name: "Jon Snow",
@@ -199,7 +202,7 @@ export const mockDataContacts = [
   },
 ];
 
-export const mockDataInvoices = [
+export const mockDataInvoices: Array<InvoiceModel> = [
   {
     id: 1,
     name: "Jon Snow",
